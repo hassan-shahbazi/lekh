@@ -12,7 +12,7 @@
 	<h2><code>{{ .Site.Data.personalize.FollowMeTitle | markdownify }}<code></h2>
 	<table> 
 		<tr>
-			<td bgcolor="#FFFFFF", style="width:24px">&nbsp<td>
+			<td bgcolor="transparent", style="width:24px">&nbsp<td>
 			{{ range .Site.Data.personalize.profiles }}
 			{{ partial "profile_link.html" . }}
 			{{ end }}
