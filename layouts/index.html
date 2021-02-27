@@ -6,28 +6,27 @@
 
 	<h1>{{ .Site.Data.personalize.Name }}</h1>
 
+	<h2><code>{{ .Site.Data.personalize.AboutTitle }}<code></h2>
 	<h4>{{ .Site.Data.personalize.About| markdownify }}</h4>
 
-	<table>
-		{{ range .Site.Data.personalize.profiles }}
-		{{ partial "profile_link.html" . }}
-		{{ end }}
+	<h2><code>{{ .Site.Data.personalize.FollowMeTitle | markdownify }}<code></h2>
+	<table> 
 		<tr>
-			{{ if ne .Site.Data.personalize.Resume "" }}
-			<td><i class="fas fa-file-alt" aria-hidden="true"></i></td>
-			<td>&nbsp;<a href="/resume/{{ .Site.Data.personalize.Resume }}" target="_blank">Resume</a></td>
-			{{ end }}
-		</tr>
-		<tr>
-			{{ if ne .Site.Data.personalize.Email "" }}
-			<td><i class="fas fa-envelope" aria-hidden="true"></i></td>
-			<td>&nbsp;<code>{{ .Site.Data.personalize.Email }}</code></td>
+			<td bgcolor="#FFFFFF", style="width:24px">&nbsp<td>
+			{{ range .Site.Data.personalize.profiles }}
+			{{ partial "profile_link.html" . }}
 			{{ end }}
 		</tr>
 	</table>
 
-	<h3>Posts</h3>
+	<h2><code> {{ .Site.Data.personalize.ContactMeTitle }}<code></h2>
+	<table>
+		<td bgcolor="#FFFFFF", style="width:24px">&nbsp</td>
+		<td>&nbsp;<a href=mailto:{{ .Site.Data.personalize.Email }}><code>h.shahbazi@tuta.io<code></a></td>
+	</table>
 
+
+	<h2><code>{{ .Site.Data.personalize.MyPosts | markdownify }}<code></h2>
 	<div>
 
 		<!-- orders content according to the "publishdate" field in front matter -->
@@ -40,10 +39,13 @@
 		{{ end }}
 
 
-		<h3><a href="posts/">View all posts</a></h3>
+		{{ if ne .Site.Data.personalize.AllPosts "" }}
+			<h2><code><a href="posts/">{{ .Site.Data.personalize.AllPosts | markdownify }}</a><code></h2>
+		{{ end }}
 	</div>
+
 	{{ if ne .Site.Data.personalize.GoatCounterCode "" }}
-	<script data-goatcounter="{{ .Site.Data.personalize.GoatCounterCode }}" async src="//gc.zgo.at/count.js"></script>
+		<script data-goatcounter="{{ .Site.Data.personalize.GoatCounterCode }}" async src="//gc.zgo.at/count.js"></script>
 	{{ end }}
 </body>
 
