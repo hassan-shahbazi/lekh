@@ -9,7 +9,7 @@
 	<h2><code>{{ .Site.Data.personalize.AboutTitle }}<code></h2>
 	<h4>{{ .Site.Data.personalize.About| markdownify }}</h4>
 
-	<h2><code>{{ .Site.Data.personalize.FollowMeTitle | markdownify }}<code></h2>
+	<h2><code>{{ .Site.Data.personalize.FollowMeTitle }}<code></h2>
 	<table> 
 		<tr>
 			<td bgcolor="transparent", style="width:24px">&nbsp<td>
@@ -26,21 +26,27 @@
 	</table>
 
 
-	<h2><code>{{ .Site.Data.personalize.MyPosts | markdownify }}<code></h2>
+	<h2><code>{{ .Site.Data.personalize.MyUpdates }}<code></h2>
+	{{ range first .Site.Data.personalize.UpdateLimit (where .Site.RegularPages "Type" "update").ByPublishDate.Reverse }}
+	<table>
+		<td bgcolor="transparent", style="width:25px">&nbsp</td>
+		<td>&nbsp;<a href="{{ .Permalink }}">{{ .Title }}</a></td>
+		<td>&nbsp;<time>{{ .Date.Format "January 2, 2006" }}</time></td>
+	</table>
+	{{ end }}
+
+	<h2><code>{{ .Site.Data.personalize.MyPosts }}<code></h2>
+	{{ range first .Site.Data.personalize.PostLimit (where .Site.RegularPages "Type" "post").ByPublishDate.Reverse }}
+	<table>
+		<td bgcolor="transparent", style="width:25px">&nbsp</td>
+		<td>&nbsp;<a href="{{ .Permalink }}">{{ .Title }}</a></td>
+		<td>&nbsp;<time>{{ .Date.Format "January 2, 2006" }}</time></td>
+	</table>
+	{{ end }}
+
 	<div>
-
-		<!-- orders content according to the "publishdate" field in front matter -->
-		{{ range first .Site.Data.personalize.PostLimit .Pages.ByPublishDate }}
-		<div>
-			<a href="{{ .Permalink }}">{{ .Title }}</a><br />
-			<time>{{ .Date.Format "January 2, 2006" }}</time>
-		</div>
-		<br />
-		{{ end }}
-
-
 		{{ if ne .Site.Data.personalize.AllPosts "" }}
-			<h2><code><a href="posts/">{{ .Site.Data.personalize.AllPosts | markdownify }}</a><code></h2>
+			<h2><code><a href="posts/">{{ .Site.Data.personalize.AllPosts }}</a><code></h2>
 		{{ end }}
 	</div>
 
