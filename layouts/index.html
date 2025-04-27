@@ -6,49 +6,62 @@
 
 	<h1>{{ .Site.Data.personalize.Name }}</h1>
 
+	<div style="margin-bottom: 2em;"></div>
+
 	<h2><code>{{ .Site.Data.personalize.AboutTitle }}<code></h2>
 	<h4>{{ .Site.Data.personalize.About| markdownify }}</h4>
 
+	<div style="margin-bottom: 2em;"></div>
+
 	<h2><code>{{ .Site.Data.personalize.FollowMeTitle }}<code></h2>
-	<table> 
+	<table style="margin-left: 1em;">
 		<tr>
-			<td bgcolor="transparent", style="width:24px">&nbsp<td>
 			{{ range .Site.Data.personalize.profiles }}
 			{{ partial "profile_link.html" . }}
 			{{ end }}
 		</tr>
 	</table>
 
+	<div style="margin-bottom: 2em;"></div>
+
 	<h2><code> {{ .Site.Data.personalize.ContactMeTitle }}<code></h2>
-	<table>
-		<td bgcolor="transparent", style="width:25px">&nbsp</td>
+	<table style="margin-left: 1em;">
 		<td>&nbsp;<a href=mailto:{{ .Site.Data.personalize.Email }}><code>{{ .Site.Data.personalize.Email }}<code></a></td>
 	</table>
 
+	<!-- <div style="margin-bottom: 2em;"></div>
 
-	<h2><code>{{ .Site.Data.personalize.MyUpdates }}<code></h2>
-	{{ range first .Site.Data.personalize.UpdateLimit (where .Site.RegularPages "Type" "update").ByPublishDate.Reverse }}
-	<table>
-		<td bgcolor="transparent", style="width:25px">&nbsp</td>
+	<h2><code>{{ .Site.Data.personalize.ReadingList }}<code></h2>
+	{{ range first .Site.Data.personalize.BookLimit (where .Site.RegularPages "Type" "book").ByLastmod.Reverse }}
+	<table style="margin-left: 1em;">
 		<td>&nbsp;<a href="{{ .Permalink }}">{{ .Title }}</a></td>
-		<td>&nbsp;<time>{{ .Date.Format "January 2, 2006" }}</time></td>
-	</table>
-	{{ end }}
-
-	<h2><code>{{ .Site.Data.personalize.MyPosts }}<code></h2>
-	{{ range first .Site.Data.personalize.PostLimit (where .Site.RegularPages "Type" "post").ByPublishDate.Reverse }}
-	<table>
-		<td bgcolor="transparent", style="width:25px">&nbsp</td>
-		<td>&nbsp;<a href="{{ .Permalink }}">{{ .Title }}</a></td>
-		<td>&nbsp;<time>{{ .Date.Format "January 2, 2006" }}</time></td>
+		<td>&nbsp;By {{ .Params.author }}</td>
 	</table>
 	{{ end }}
 
 	<div>
-		{{ if ne .Site.Data.personalize.AllPosts "" }}
-			<h2><code><a href="posts/">{{ .Site.Data.personalize.AllPosts }}</a><code></h2>
-		{{ end }}
+		<h4><code><a href="posts/">{{ .Site.Data.personalize.AllBooks }}</a><code></h4>
+	</div> -->
+
+	<div style="margin-bottom: 2em"></div>
+
+	<h2><code>{{ .Site.Data.personalize.MyPosts }}<code></h2>
+	{{ range first .Site.Data.personalize.PostLimit (where .Site.RegularPages "Type" "post").ByPublishDate.Reverse }}
+	<table style="margin-left: 1em;">
+		<tr>
+			<td style="padding-left: 1em;"><a href="{{ .Permalink }}">{{ .Title }}</a>&nbsp;&nbsp;<time>{{ .Date.Format "January 2, 2006" }}</time></td>
+		</tr>
+		<tr>
+			<td colspan="2" style="padding-left: 2em;">{{ .Summary | truncate 250 "..." }}</td>
+		</tr>
+	</table>
+	{{ end }}
+
+	<div>
+		<h4><code><a href="posts/">{{ .Site.Data.personalize.AllPosts }}</a><code></h4>
 	</div>
+
+	
 </body>
 
 </html>

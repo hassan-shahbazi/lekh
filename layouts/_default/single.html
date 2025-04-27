@@ -5,8 +5,12 @@
 <h1>{{ .Title }}</h1>
 <p class="post-meta">
     <time itemprop="datePublished">
-        <code>{{ .Date.Format "January 2, 2006" }}</code>
-        <a class="muted small" href="{{ .Site.BaseURL }}"><code>&nbsp; by {{ .Site.Data.personalize.Name }}</code></a>
+        {{ if .Params.author }}
+            <a class="muted small" href="{{ .Params.author }}"><code>&nbsp; by {{ .Params.author }}</code></a>
+        {{ else }}
+            <code>{{ .Date.Format "January 2, 2006" }}</code>
+            <a class="muted small" href="{{ .Site.BaseURL }}"><code>&nbsp; by {{ .Site.Data.personalize.Name }}</code></a>
+        {{ end }}
     </time>
 </p>
 

@@ -8,13 +8,12 @@
   <div>
     <!-- orders content according to the "publishdate" field in front matter -->
     {{ range .Pages.ByPublishDate.Reverse }}
-    <div>
-      <code>
-        <a href="{{ .Permalink }}">{{ .Title }}</a>
-        <time>{{ .Date.Format "January 2, 2006" }}</time>
-      </code>
+    <div class="post-summary">
+      <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+      <p>{{ .Summary }}</p>
+      <code><time>{{ .Date.Format "January 2, 2006" }}</time></code>
     </div>
-    <br />
+    <hr />
     {{ end }}
   </div>
 </body>
