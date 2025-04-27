@@ -52,3 +52,27 @@ table {
   empty-cells: show;
   border-color: #333333;
 }
+
+/* Add support for light mode */
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: #ffffff;
+    color: #000000;
+  }
+
+  a {
+    color: #007acc;
+  }
+
+  h1, h2, strong {
+    color: #000000;
+  }
+
+  hr {
+    border: 1px solid #cccccc;
+  }
+
+  table {
+    border-color: #cccccc;
+  }
+}

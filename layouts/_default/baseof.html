@@ -1,0 +1,35 @@
+<style id="theme-styles">
+  /* Default styles for light/dark mode */
+  :root {
+    --background-color: #ffffff;
+    --text-color: #000000;
+    --link-color: #007acc;
+    --border-color: #cccccc;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background-color: #0d1117;
+      --text-color: #c9d1d9;
+      --link-color: #58a6ff;
+      --border-color: #333333;
+    }
+  }
+
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+
+  a {
+    color: var(--link-color);
+  }
+
+  hr {
+    border: 1px solid var(--border-color);
+  }
+
+  table {
+    border-color: var(--border-color);
+  }
+</style>

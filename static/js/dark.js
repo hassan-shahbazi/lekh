@@ -50,6 +50,7 @@ GW.mediaQueries.mobileWide = matchMedia("(max-width: 900px)");
 GW.mediaQueries.mobileMax = matchMedia("(max-width: 960px)");
 GW.mediaQueries.hover = matchMedia("only screen and (hover: hover) and (pointer: fine)");
 GW.mediaQueries.systemDarkModeActive = matchMedia("(prefers-color-scheme: dark)");
+GW.mediaQueries.systemLightModeActive = matchMedia("(prefers-color-scheme: light)");
 
 GW.modeOptions = [
     [ 'auto', 'Auto', 'Set light or dark mode automatically, according to system-wide setting' ],
@@ -434,8 +435,8 @@ function setMode(modeOption) {
         modeStyles.innerHTML = `@media (prefers-color-scheme:dark) {${GW.modeStyles}}`;
     } else if (modeOption == 'dark') {
         modeStyles.innerHTML = GW.modeStyles;
-    } else {
-        modeStyles.innerHTML = "";
+    } else if (modeOption == 'light') {
+        modeStyles.innerHTML = ""; // Clear styles for light mode
     }
 
     // Update selector state.
