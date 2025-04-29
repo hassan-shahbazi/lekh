@@ -29,30 +29,16 @@
 		<td>&nbsp;<a href=mailto:{{ .Site.Data.personalize.Email }}><code>{{ .Site.Data.personalize.Email }}<code></a></td>
 	</table>
 
-	<!-- <div style="margin-bottom: 2em;"></div>
-
-	<h2><code>{{ .Site.Data.personalize.ReadingList }}<code></h2>
-	{{ range first .Site.Data.personalize.BookLimit (where .Site.RegularPages "Type" "book").ByLastmod.Reverse }}
-	<table style="margin-left: 1em;">
-		<td>&nbsp;<a href="{{ .Permalink }}">{{ .Title }}</a></td>
-		<td>&nbsp;By {{ .Params.author }}</td>
-	</table>
-	{{ end }}
-
-	<div>
-		<h4><code><a href="posts/">{{ .Site.Data.personalize.AllBooks }}</a><code></h4>
-	</div> -->
-
 	<div style="margin-bottom: 2em"></div>
 
 	<h2><code>{{ .Site.Data.personalize.MyPosts }}<code></h2>
 	{{ range first .Site.Data.personalize.PostLimit (where .Site.RegularPages "Type" "post").ByPublishDate.Reverse }}
 	<table style="margin-left: 1em;">
 		<tr>
-			<td style="padding-left: 1em;"><a href="{{ .Permalink }}">{{ .Title }}</a>&nbsp;&nbsp;<time>{{ .Date.Format "January 2, 2006" }}</time></td>
+			<td style="padding-left: 0.5em;"><a href="{{ .Permalink }}">{{ .Title }}</a>&nbsp;&nbsp;<time>{{ .Date.Format "January 2, 2006" }}</time></td>
 		</tr>
 		<tr>
-			<td colspan="2" style="padding-left: 2em;">{{ .Summary | truncate 250 "..." }}</td>
+			<td colspan="2" style="padding-left: 1.5em;">{{ .Summary | truncate 250 "..." }}</td>
 		</tr>
 	</table>
 	{{ end }}
